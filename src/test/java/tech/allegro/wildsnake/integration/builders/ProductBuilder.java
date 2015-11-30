@@ -2,20 +2,22 @@ package tech.allegro.wildsnake.integration.builders;
 
 import tech.allegro.wildsnake.product.model.Product;
 
+import java.math.BigDecimal;
+
 public class ProductBuilder {
     private int numberOfInstances = 1;
 
     private String name;
     private String imageUrl = "http://localhost/image";
     private String description = "description";
-    private Long price = 0l;
+    private BigDecimal price = BigDecimal.ZERO;
 
 
     public ProductBuilder(String name) {
         this.name = name;
     }
 
-    public ProductBuilder whichPrice(Long price)
+    public ProductBuilder whichPrice(BigDecimal price)
     {
         this.price = price;
         return this;

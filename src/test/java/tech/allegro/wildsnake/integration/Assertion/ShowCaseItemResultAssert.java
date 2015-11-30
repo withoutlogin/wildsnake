@@ -4,6 +4,7 @@ import tech.allegro.wildsnake.integration.builders.ProductBuilder;
 import tech.allegro.wildsnake.product.model.Product;
 import tech.allegro.wildsnake.showcase.model.ShowcaseItem;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -34,7 +35,7 @@ public class ShowCaseItemResultAssert {
     public ShowCaseItemResultAssert newest() {
         List<Product> expectedProducts = new ArrayList<>();
         IntStream.range(0, storedNumber).forEach(number -> {
-            expectedProducts.add(new ProductBuilder(String.format("product %s", number)).whichPrice(1234l).build());
+            expectedProducts.add(new ProductBuilder(String.format("product %s", number)).whichPrice(new BigDecimal(122333)).build());
         });
         IntStream.range(0, limit).forEach(index -> {
             assertThat(expectedProducts.get(storedNumber - (limit - index)).getName()).isEqualTo(result.get(limit - index - 1).getTitle());

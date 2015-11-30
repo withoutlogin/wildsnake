@@ -2,6 +2,7 @@ package tech.allegro.wildsnake.integration.builders;
 
 import tech.allegro.wildsnake.product.repository.ProductRepository;
 
+import java.math.BigDecimal;
 import java.util.stream.IntStream;
 
 public class ProductListFactory {
@@ -13,7 +14,7 @@ public class ProductListFactory {
 
     public void buildNumberOfProductsAndSave(int numberOfProducts) {
         IntStream.range(0, numberOfProducts).forEachOrdered(number -> {
-            repository.save(new ProductBuilder(String.format("product %s", number)).whichPrice(1234l).build());
+            repository.save(new ProductBuilder(String.format("product %s", number)).whichPrice(BigDecimal.TEN).build());
         });
     }
 

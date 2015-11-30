@@ -7,6 +7,7 @@ import tech.allegro.wildsnake.product.model.Product;
 import tech.allegro.wildsnake.product.repository.ProductRepository;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
 
 @Configuration
 @Profile("!prod")
@@ -17,12 +18,12 @@ public class DevDbConfig {
 
     @PostConstruct
     public void populateDatabase() {
-        repository.save(new Product("1Snake", "", "", 12340l));
-        repository.save(new Product("2Snake", "", "", 12340l));
-        repository.save(new Product("3Snake", "", "", 1240l));
-        repository.save(new Product("4Snake", "", "", 12540l));
-        repository.save(new Product("5Snake", "", "", 240l));
-        repository.save(new Product("6Snake", "", "", 52340l));
+        repository.save(new Product("1Snake", "", "", BigDecimal.TEN));
+        repository.save(new Product("2Snake", "", "", BigDecimal.TEN));
+        repository.save(new Product("3Snake", "", "", BigDecimal.TEN));
+        repository.save(new Product("4Snake", "", "", BigDecimal.TEN));
+        repository.save(new Product("5Snake", "", "", BigDecimal.TEN));
+        repository.save(new Product("6Snake", "", "", BigDecimal.TEN));
     }
 
 }
