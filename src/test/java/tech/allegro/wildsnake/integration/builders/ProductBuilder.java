@@ -8,13 +8,22 @@ public class ProductBuilder {
     private String name;
     private String imageUrl = "http://localhost/image";
     private String description = "description";
+    private Long price = 0l;
 
 
     public ProductBuilder(String name) {
         this.name = name;
     }
 
+    public ProductBuilder whichPrice(Long price)
+    {
+        this.price = price;
+        return this;
+    }
+
+
+
     public Product build() {
-        return new Product(name, imageUrl, description);
+        return new Product(name, imageUrl, description, price);
     }
 }
