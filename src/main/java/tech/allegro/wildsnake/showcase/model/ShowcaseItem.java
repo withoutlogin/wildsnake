@@ -21,7 +21,7 @@ public class ShowcaseItem {
     public String getImageUrl() {
         return imageUrl;
     }
-git 
+
     public BigDecimal getPrice() {
         return price;
     }
