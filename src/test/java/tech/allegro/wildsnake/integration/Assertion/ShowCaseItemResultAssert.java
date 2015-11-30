@@ -35,7 +35,7 @@ public class ShowCaseItemResultAssert {
     public ShowCaseItemResultAssert newest() {
         List<Product> expectedProducts = new ArrayList<>();
         IntStream.range(0, storedNumber).forEach(number -> {
-            expectedProducts.add(new ProductBuilder(String.format("product %s", number)).whichPrice(new BigDecimal(122333)).build());
+            expectedProducts.add(new ProductBuilder(String.format("product %s", number)).whichPrice(BigDecimal.TEN).build());
         });
         IntStream.range(0, limit).forEach(index -> {
             assertThat(expectedProducts.get(storedNumber - (limit - index)).getName()).isEqualTo(result.get(limit - index - 1).getTitle());
