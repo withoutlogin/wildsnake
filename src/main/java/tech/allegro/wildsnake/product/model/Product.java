@@ -18,6 +18,7 @@ public class Product {
     private String description;
 
     public Product() {
+
     }
 
     @JsonCreator

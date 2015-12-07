@@ -1,9 +1,11 @@
 package tech.allegro.wildsnake.integration.api;
 
 import org.assertj.core.util.Lists;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import tech.allegro.wildsnake.integration.WildSnakeIntegrationTest;
 import tech.allegro.wildsnake.integration.builders.ProductListFactory;
@@ -29,6 +31,16 @@ public class ProductsApiTest extends WildSnakeIntegrationTest {
     }
 
     @Test
+    public void should_get_5_products() {
+        givenProduct()
+                .buildNumberOfProductsAndSave(5);
+
+        List<Product> products = thenGetProductsFromApi();
+
+        assertThat(products).hasSize(5);
+    }
+
+    @Test
     public void should_get_3_products() {
         givenProduct()
                 .buildNumberOfProductsAndSave(3);
@@ -36,6 +48,12 @@ public class ProductsApiTest extends WildSnakeIntegrationTest {
         List<Product> products = thenGetProductsFromApi();
 
         assertThat(products).hasSize(3);
+    }
+
+    @Before
+    public void setup()
+    {
+        realProductRepository.deleteAll();
     }
 
     @Autowired
@@ -46,7 +64,8 @@ public class ProductsApiTest extends WildSnakeIntegrationTest {
     }
 
     private List<Product> thenGetProductsFromApi() {
-        return Lists.newArrayList(template.getForEntity("http://localhost:8080/api/v1/products", Product[].class).getBody());
+        ResponseEntity<Product[]> forEntity = template.getForEntity("http://localhost:8080/api/v1/products", Product[].class);
+        return Lists.newArrayList(forEntity.getBody());
     }
 
 }
