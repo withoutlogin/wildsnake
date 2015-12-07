@@ -1,5 +1,6 @@
 package tech.allegro.wildsnake.integration;
 
+import org.junit.Before;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
@@ -13,4 +14,9 @@ import tech.allegro.wildsnake.WildsnakeApplication;
 @ActiveProfiles("test")
 public class WildSnakeIntegrationTest {
     public TestRestTemplate template = new TestRestTemplate();
+
+    @Before
+    public void setUp() {
+
+    }
 }

@@ -1,14 +1,20 @@
 package tech.allegro.wildsnake.showcase.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 
 public class ShowcaseItem {
     private final String title;
     private final String imageUrl;
-    private BigDecimal price;
+    private final BigDecimal price;
 
-
-    public ShowcaseItem(String title, String imageUrl, BigDecimal price) {
+    @JsonCreator
+    public ShowcaseItem(
+            @JsonProperty("title") String title,
+            @JsonProperty("imageUrl") String imageUrl,
+            @JsonProperty("price") BigDecimal price) {
         this.title = title;
         this.imageUrl = imageUrl;
         this.price = price;
@@ -24,5 +30,14 @@ public class ShowcaseItem {
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "ShowcaseItem{" +
+                "title='" + title + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

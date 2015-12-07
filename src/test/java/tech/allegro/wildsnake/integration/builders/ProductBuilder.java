@@ -10,22 +10,20 @@ public class ProductBuilder {
     private String name;
     private String imageUrl = "http://localhost/image";
     private String description = "description";
-    private BigDecimal price = BigDecimal.ZERO;
+    private BigDecimal price;
 
 
     public ProductBuilder(String name) {
         this.name = name;
     }
 
-    public ProductBuilder whichPrice(BigDecimal price)
-    {
+    public ProductBuilder withPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
 
-
-
     public Product build() {
         return new Product(name, imageUrl, description, price);
     }
+
 }
